@@ -27,4 +27,8 @@ public interface StudentMapper {
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);
+
+    List<Student> findAllBySplit(@Param("sclass") Integer sclass, @Param("sgrade")Integer sgrade, @Param("currentPage") Integer currentPage, @Param("lineSize") Integer lineSize);
+
+    Integer getAllCount(@Param("sclass") Integer sclass, @Param("sgrade")Integer sgrade);
 }

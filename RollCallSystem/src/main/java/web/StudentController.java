@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import service.StudentService;
 
 import java.util.HashMap;
@@ -23,17 +24,28 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @RequestMapping("/student/register")
+    @RequestMapping(value = "/student/register",produces = "text/html;charset=UTF-8;")
+    @ResponseBody
     public String register(Student student){
-        boolean b = studentService.register(student);
-        System.out.println(b);
-        return null;
+        Integer i = studentService.findStudentBySid(student.getSid());
+        Map<String,Object> map = new HashMap<>();
+        if(i == 0){
+            boolean b = studentService.register(student);
+            System.out.println("register::"+b);
+            map.put("message","注册成功！！");
+        }else {
+            map.put("message","注册失败，该学号已被注册");
+        }
+        Gson gson = new Gson();
+        String gs = gson.toJson(map);
+        System.out.println(gs);
+        return gs;
     }
 
     @RequestMapping("/student/findAllBySplit")
-    public String findAllBySplit(Integer sclass ,Integer sgrade,Integer currentPage,Integer lineSize){
-        System.out.println("------>>>");
-        List<Student> students = studentService.findAllBySplit(sclass,sgrade,currentPage,lineSize);
+    @ResponseBody
+    public String findAllBySplit(Integer sclass ,Integer sgrade,Integer page,Integer rows){
+        List<Student> students = studentService.findAllBySplit(sclass,sgrade,page,rows);
         System.out.println(students.size());
         Integer num = studentService.getAllCount(sclass,sgrade);
         Map<String , Object> map = new HashMap<>();
@@ -44,6 +56,34 @@ public class StudentController {
         return gs;
     }
 
+    @RequestMapping(value = "/student/remove",produces="text/html;charset=UTF-8;")
+    @ResponseBody
+    public String remove(Integer id){
+        boolean b = studentService.removeBySid(id);
+        String message = "";
+        Gson gson = new Gson();
+        Map<String,Object> map = new HashMap<>();
+        if(b){
+            message = "删除成功";
+
+        }else message = "删除失败";
+        map.put("message",message);
+        String gs = gson.toJson(map);
+        return gs;
+    }
+
+    @RequestMapping(value = "/student/getclassstudent",produces = "text/html;charset=UTF-8;")
+    @ResponseBody
+    public String getClassStudent(Integer sclass,Integer sgrade){
+        List<Student> students = studentService.getClassStudent(sclass,sgrade);
+        Map<String, Object> map = new HashMap<>();
+        map.put("total",students.size());
+        map.put("students",students);
+        Gson gson = new Gson();
+        String gs = gson.toJson(map);
+        System.out.println(gs);
+        return gs;
+    }
 
 
 

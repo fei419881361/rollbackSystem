@@ -36,6 +36,10 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public boolean addTeacher(Teacher teacher) {
+        if( teacherMapper.selectByTid(teacher.getTid())>0){
+            return false;
+        }
+
         return teacherMapper.insert(teacher) > 0;
     }
 
@@ -47,6 +51,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public boolean deleteStudent(Student student) {
         return studentMapper.deleteByPrimaryKey(student.getId())>0;
+    }
+
+    @Override
+    public Teacher findByid(Integer id) {
+        return teacherMapper.selectByPrimaryKey(id);
     }
 
 }

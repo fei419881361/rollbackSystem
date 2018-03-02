@@ -27,4 +27,6 @@ public interface ClasstableMapper {
     int updateByPrimaryKeySelective(Classtable record);
 
     int updateByPrimaryKey(Classtable record);
+
+    Classtable selectBySidAndSgrade(@Param("sclass") Integer sclass, @Param("sgrade") Integer sgrade);
 }

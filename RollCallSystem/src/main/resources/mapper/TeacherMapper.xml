@@ -218,4 +218,13 @@
     WHERE
     t.tid = #{tid} AND t.pwd = #{pwd}
   </select>
+
+  <select id="selectByTid" resultType="java.lang.Integer" parameterType="java.lang.String">
+    SELECT
+    count(*)
+    FROM
+    teacher t
+    WHERE
+    t.tid = #{tid}
+  </select>
 </mapper>

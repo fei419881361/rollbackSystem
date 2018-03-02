@@ -5,8 +5,11 @@ import entity.Student;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.StudentService;
+import service.TeacherService;
 import tyd.BaseTest;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +17,21 @@ import java.util.Map;
 public class testStudentService extends BaseTest {
     @Autowired
     StudentService studentService;
-    public testStudentService(){}
+
+    @Autowired
+    TeacherService teacherService;
+
+
+    public testStudentService(){
+
+    }
+
+    @Test
+    public void test4(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(simpleDateFormat.format(new Date().getTime()));
+
+    }
     @Test
     public void test(){
         Student student = new Student();

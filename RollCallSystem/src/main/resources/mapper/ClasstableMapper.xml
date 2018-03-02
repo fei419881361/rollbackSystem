@@ -193,4 +193,8 @@
       url = #{url,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectBySidAndSgrade" resultType="entity.Classtable">
+    SELECT * FROM classtable WHERE sclass = #{sclass} AND sgrade = #{sgrade}
+  </select>
 </mapper>

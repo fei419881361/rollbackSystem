@@ -27,4 +27,14 @@ public interface RollCallMapper {
     int updateByPrimaryKeySelective(RollCall record);
 
     int updateByPrimaryKey(RollCall record);
+
+    List<RollCall> findAllBySplit(@Param("currentPage") Integer currentPage, @Param("lineSize") Integer lineSize);
+
+    Integer getAllCount();
+
+    RollCall selectBySidAndSgrade(@Param("sid") Integer sid, @Param("sgrade") Integer sgrade);
+
+    List<RollCall> findAllBySplitBySid(@Param("sid")String sid, @Param("currentPage")Integer page, @Param("lineSize")Integer rows);
+
+    Integer getAllCountByStu(String sid);
 }

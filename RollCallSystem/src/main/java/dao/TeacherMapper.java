@@ -29,4 +29,6 @@ public interface TeacherMapper {
     int updateByPrimaryKey(Teacher record);
 
     Teacher selectByTidAndPwd(@Param("tid") String tid,@Param("pwd") String pwd);
+
+    int selectByTid(String tid);
 }

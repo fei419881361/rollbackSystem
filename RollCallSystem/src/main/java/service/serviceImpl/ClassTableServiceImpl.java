@@ -22,4 +22,10 @@ public class ClassTableServiceImpl implements ClassTableService {
     public boolean insert(Classtable classtable) {
         return classtableMapper.insert(classtable) > 0 ;
     }
+
+    @Override
+    public Classtable getClassTable(Integer sclass, Integer sgrade) {
+
+        return classtableMapper.selectBySidAndSgrade(sclass,sgrade);
+    }
 }

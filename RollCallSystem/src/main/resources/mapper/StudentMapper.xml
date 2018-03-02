@@ -290,4 +290,20 @@
     </if>
   </select>
 
+  <select id="findBySid" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM student WHERE sid = #{sid}
+  </select>
+
+  <select id="getClassStudent" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * from student Where sclass = #{sclass} AND sgrade = #{sgrade}
+  </select>
+
+  <select id="selectByaccountANDpwd" resultType="entity.Student">
+     SELECT
+    *
+    FROM
+    student
+    WHERE
+    sid = #{sid} AND pwd = #{pwd}
+  </select>
 </mapper>

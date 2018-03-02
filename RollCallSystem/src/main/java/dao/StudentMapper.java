@@ -31,4 +31,10 @@ public interface StudentMapper {
     List<Student> findAllBySplit(@Param("sclass") Integer sclass, @Param("sgrade")Integer sgrade, @Param("currentPage") Integer currentPage, @Param("lineSize") Integer lineSize);
 
     Integer getAllCount(@Param("sclass") Integer sclass, @Param("sgrade")Integer sgrade);
+
+    Integer findBySid(String sid);
+
+    List<Student> getClassStudent(@Param("sclass") Integer sclass, @Param("sgrade")Integer sgrade);
+
+    Student selectByaccountANDpwd(@Param("sid") String aUsername, @Param("pwd") String aPassword);
 }

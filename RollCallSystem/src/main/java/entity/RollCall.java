@@ -13,6 +13,18 @@ public class RollCall {
 
     private String rctime;
 
+    @Override
+    public String toString() {
+        return "RollCall{" +
+                "id=" + id +
+                ", sname='" + sname + '\'' +
+                ", sid='" + sid + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", type=" + type +
+                ", rctime='" + rctime + '\'' +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

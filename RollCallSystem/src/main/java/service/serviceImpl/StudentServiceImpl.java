@@ -26,7 +26,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getClassStudent(Integer sclass, Integer sgrade) {
-        return null;
+        return studentMapper.getClassStudent(sclass,sgrade);
     }
 
     @Override
@@ -39,7 +39,22 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Integer findStudentBySid(String sid) {
+        return studentMapper.findBySid(sid);
+    }
+
+    @Override
     public Integer getAllCount(Integer sclass, Integer sgrade) {
         return studentMapper.getAllCount(sclass,sgrade);
+    }
+
+    @Override
+    public boolean removeBySid(Integer id) {
+        return studentMapper.deleteByPrimaryKey(id) > 0;
+    }
+
+    @Override
+    public Student studentIsExist(String aUsername, String aPassword) {
+        return studentMapper.selectByaccountANDpwd(aUsername,aPassword);
     }
 }

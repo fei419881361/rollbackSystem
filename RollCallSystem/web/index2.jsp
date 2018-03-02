@@ -46,7 +46,7 @@
     <div id="aa" data-options="border:0 , multiple:true" class="easyui-accordion" style="width: 193px;">
         <div title="信息管理" data-options="iconCls:'icon-save'"style="overflow: auto;padding: 10px">
             <ul>
-                <li><a href="javascript:void(0)" pageUrl="info.jsp">查看个人信息</a></li>
+                <li><a href="javascript:void(0)" pageUrl="/teacher/info">查看个人信息</a></li>
                 <li><a href="javascript:void(0)" pageUrl="addTeacher.jsp">增加教师管理员</a></li>
                 <li><a href="javascript:void(0)" pageUrl="lookStudent.jsp">查看学生</a></li>
             </ul>
@@ -92,8 +92,15 @@
             }else {
                 $("#center_tabs").tabs("add",{
                     title:title,
-                    content:"<iframe src='"+pageUrl+"' width='100%' height='100%' frameborder='0'></iframe>",
-                    closeable:true
+                    content:"<iframe  frameborder ='0' width = '100%' height= '99%' src='"+pageUrl+"'></iframe>",
+                    closable:true,
+                    fit:true,
+                    tools:[{
+                        iconCls:'icon-mini-refresh',
+                        handler:function(){
+                            alert('refresh');
+                        }
+                    }]
                 })
             }
         })

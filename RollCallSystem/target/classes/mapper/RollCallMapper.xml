@@ -225,4 +225,27 @@
       rctime = #{rctime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findAllBySplit" resultMap="BaseResultMap">
+    select * from rollcall WHERE
+    type = 2 OR type = 3 limit #{currentPage},#{lineSize}
+  </select>
+
+  <select id="getAllCount" resultType="java.lang.Integer">
+    SELECT count(*) FROM rollcall
+  </select>
+  <select id="selectBySidAndSgrade" resultType="entity.RollCall">
+    SELECT * FROM rollcall WHERE sid = #{sid} AND sgrade = #{sgrade}
+  </select>
+
+  <select id="findAllBySplitBySid" resultMap="BaseResultMap">
+    select * from rollcall WHERE
+    sid = #{sid} limit #{currentPage},#{lineSize}
+  </select>
+
+  <select id="getAllCountByStu" resultType="java.lang.Integer" parameterType="java.lang.String">
+    SELECT count(*) FROM rollcall WHERE sid = #{sid}
+  </select>
+
+
 </mapper>

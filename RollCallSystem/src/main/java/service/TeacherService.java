@@ -13,4 +13,6 @@ public interface TeacherService {
     boolean addStudent(Student student);
 
     boolean deleteStudent(Student student);
+
+    Teacher findByid(Integer id);
 }

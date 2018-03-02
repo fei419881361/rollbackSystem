@@ -10,5 +10,11 @@ public interface StudentService {
     List<Student> getClassStudent(Integer sclass,Integer sgrade);
     List<Student> findAllBySplit(Integer sclass,Integer sgrade , Integer currentPage , Integer lineSize);
 
+    Integer findStudentBySid(String sid);
     Integer getAllCount(Integer sclass,Integer sgrade);
+
+    boolean removeBySid(Integer id);
+
+
+    Student studentIsExist(String aUsername, String aPassword);
 }

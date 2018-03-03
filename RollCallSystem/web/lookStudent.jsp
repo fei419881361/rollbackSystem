@@ -43,9 +43,7 @@
                 <tr class="mTr">
                     <td>年级：</td><td><input id="oSgrade" data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="text" name ="sgrade" /></td>
                 </tr>
-                <tr class="mTr">
-                    <td>初始账号：</td><td><input id="oSaccount" data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="text" name ="account" /></td>
-                </tr>
+
                 <tr class="mTr">
                     <td>初始密码：</td><td><input id="oSpwd"  data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="password" name ="pwd" /></td>
                 </tr>
@@ -106,7 +104,7 @@
         //提交增加学生表单
         $("#submitBtn").click(function () {
             $('#editForm').form('submit', {
-                url:"/teacher/addStudent",
+                url:"/student/register",
 
                 onSubmit: function(){
                     var isValid = $(this).form('validate'); //判断表单是否无效
@@ -152,8 +150,9 @@
                             height:120,
                             width:200
                         });
+                        $('#list').datagrid('reload');//刷新表格
                     });
-                    $('#list').datagrid('reload');//刷新表格
+
                 }
             },'json');
         });

@@ -57,4 +57,9 @@ public class StudentServiceImpl implements StudentService {
     public Student studentIsExist(String aUsername, String aPassword) {
         return studentMapper.selectByaccountANDpwd(aUsername,aPassword);
     }
+
+    @Override
+    public boolean resetPwd(String sid, String password, String newPassword) {
+        return studentMapper.resetPwd(sid,password,newPassword) > 0;
+    }
 }

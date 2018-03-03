@@ -58,6 +58,12 @@
                 <li><a href="javascript:void(0)" pageUrl="lookClassTable.jsp">查看课表</a></li>
             </ul>
         </div>
+
+        <div title="个人管理" data-options="iconCls:'icon-reload'" style="overflow: auto;padding: 10px">
+            <ul>
+                <li><a href="javascript:void(0)" pageUrl="rePassword.jsp">修改密码</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 

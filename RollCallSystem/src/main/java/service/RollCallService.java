@@ -18,4 +18,6 @@ public interface RollCallService {
 
     List<RollCall> findAllBySplitBySid(String sid, Integer page, Integer rows);
     Integer getAllCountByStu(String sid);
+
+    boolean update(RollCall rc);
 }

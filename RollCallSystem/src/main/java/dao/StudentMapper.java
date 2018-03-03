@@ -37,4 +37,6 @@ public interface StudentMapper {
     List<Student> getClassStudent(@Param("sclass") Integer sclass, @Param("sgrade")Integer sgrade);
 
     Student selectByaccountANDpwd(@Param("sid") String aUsername, @Param("pwd") String aPassword);
+
+    Integer resetPwd(@Param("sid") String sid, @Param("pwd") String password, @Param("npwd") String newPassword);
 }

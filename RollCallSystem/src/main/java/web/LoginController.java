@@ -24,10 +24,11 @@ public class LoginController {
     }
 
     @RequestMapping("/login")
-    public String login(String aUsername, String aPassword, HttpServletRequest httpServletRequest){
+    public String login(String aUsername, String aPassword,String type, HttpServletRequest httpServletRequest){
         System.out.println(aUsername+aPassword);
         Teacher teacher = teacherService.teacherIsExist(aUsername,aPassword);
-        if(teacher!=null){
+        System.out.println(type);
+        if(teacher!=null&&type.equals("1")){
             String tname = teacher.getTname();
             httpServletRequest.setAttribute("tname",tname);
             httpServletRequest.getSession().setAttribute("id",teacher.getId());

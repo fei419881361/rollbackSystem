@@ -94,5 +94,25 @@ public class RollCallController {
         return gs;
     }
 
+    @RequestMapping(value = "/rollcall/update",produces="text/html;charset=UTF-8;")
+    @ResponseBody
+    public String update(RollCall rc){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String time = simpleDateFormat.format(new Date().getTime());
+        rc.setRctime(time);
+        boolean b = rollCallService.update(rc);
+        String message = "";
+        Gson gson = new Gson();
+        Map<String,Object> map = new HashMap<>();
+        if(b){
+            message = "修改成功";
+
+        }else message = "修改失败";
+        map.put("message",message);
+        String gs = gson.toJson(map);
+        return gs;
+    }
+
+
 
 }

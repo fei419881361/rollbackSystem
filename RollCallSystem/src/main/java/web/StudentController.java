@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.StudentService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,6 +86,26 @@ public class StudentController {
         return gs;
     }
 
+    @RequestMapping(value = "/student/submitResetPwd",produces = "text/html;charset=UTF-8;")
+    @ResponseBody
+    public String resetPwd(String password, String newPassword, HttpServletRequest request){
+        String sid = (String) request.getSession().getAttribute("sid");
+        Map<String,Object> map = new HashMap<>();
+        Gson gson = new Gson();
+        if(password.equals(newPassword)){
+            map.put("message","输入的新密码和原密码相同");
+            return gson.toJson(map);
+        }else {
+            boolean b = studentService.resetPwd(sid,password,newPassword);
+            if (b){
+                map.put("message","修改成功");
+                return gson.toJson(map);
+            }
+            map.put("message","原来的密码输入错误");
+            return gson.toJson(map);
+        }
+
+    }
 
 
 

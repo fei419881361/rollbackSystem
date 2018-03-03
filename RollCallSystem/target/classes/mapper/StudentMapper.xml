@@ -306,4 +306,10 @@
     WHERE
     sid = #{sid} AND pwd = #{pwd}
   </select>
+
+  <update id="resetPwd">
+    UPDATE student
+    SET pwd = #{npwd}
+    WHERE sid = #{sid} AND pwd = #{pwd}
+  </update>
 </mapper>

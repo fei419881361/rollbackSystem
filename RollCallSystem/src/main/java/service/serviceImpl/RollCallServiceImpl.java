@@ -61,4 +61,9 @@ public class RollCallServiceImpl  implements RollCallService{
     public Integer getAllCountByStu(String sid) {
         return rollCallMapper.getAllCountByStu(sid);
     }
+
+    @Override
+    public boolean update(RollCall rc) {
+        return rollCallMapper.updateByPrimaryKey(rc)>0;
+    }
 }

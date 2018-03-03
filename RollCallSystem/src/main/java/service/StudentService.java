@@ -17,4 +17,6 @@ public interface StudentService {
 
 
     Student studentIsExist(String aUsername, String aPassword);
+
+    boolean resetPwd(String sid, String password, String newPassword);
 }

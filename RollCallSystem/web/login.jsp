@@ -26,7 +26,7 @@
         <p align="center" class="loginTitle" style="margin-bottom: 5px;"><font color="#4ac9ff">Teacher</font><font color="#ff508b">RollCall</font></p>
         <p align="center" class="slogan" style="margin-bottom: 30px;">课堂点到系统</p>
         <form action="/login" method="post" onsubmit="return submitForm();">
-            <div class="formDiv">
+            <div class="formDiv" style="height: 400px">
                 <table cellpadding="5" cellspacing="10">
                     <tr >
                         <td colspan="2" align="center">
@@ -49,6 +49,13 @@
                             <input class="form-control" placeholder="请输入密码" onblur="checkPassword()" type="password" id = "password" name="aPassword" style="width: 190px; height: 35px;">
                         </td>
                     </tr>
+                    <tr height="15">
+                        <td>
+                            老师：<input type="radio" name="type" value="1">
+                            学生：<input type="radio" name="type" value="2">
+                        </td>
+                    </tr>
+
                     <tr height="50">
                         <td>
                             <img width="30" src = "images/login/checkcode.png"/>&nbsp;验证码：
